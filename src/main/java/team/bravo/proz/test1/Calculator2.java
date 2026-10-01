@@ -1,6 +1,6 @@
 package team.bravo.proz.test1;
 
-public class Calculator {
+public class Calculator2 {
 
     public static int doubleNumber(int number) {
         return number * 2;
