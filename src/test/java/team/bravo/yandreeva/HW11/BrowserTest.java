@@ -1,4 +1,4 @@
-package team.bravo.proz.test1;
+package team.bravo.yandreeva.HW11;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -6,13 +6,14 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.annotations.Test;
 
 import java.time.Duration;
 import java.util.List;
 
-public class BrowserDemo {
-
-    public static void main(String[] args) {
+public class BrowserTest {
+    @Test
+    public void simpleTest() {
         WebDriver driver = new ChromeDriver();
         try {
             driver.get("https://www.selenium.dev/selenium/web/web-form.html");

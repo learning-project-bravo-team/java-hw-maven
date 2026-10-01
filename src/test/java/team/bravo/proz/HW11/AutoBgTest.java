@@ -1,4 +1,4 @@
-package team.bravo.proz.test1;
+package team.bravo.proz.HW11;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -6,7 +6,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.Test;
 
-public class AutoBg2Test {
+public class AutoBgTest {
 
     @Test
     public void cookieExistenceTest() {
