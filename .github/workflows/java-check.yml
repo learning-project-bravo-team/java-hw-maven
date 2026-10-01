@@ -1,0 +1,43 @@
+name: Java Check
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  compile:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v7
+
+      - name: Setup Java
+        uses: actions/setup-java@v6
+        with:
+          distribution: temurin
+          java-version: '25'
+          cache: maven
+
+      - name: Compile main and test sources
+        run: mvn -B -ntp test-compile
+
+      - name: Download Checkstyle
+        run: |
+          curl -sSL -o checkstyle.jar \
+            https://github.com/checkstyle/checkstyle/releases/download/checkstyle-14.1.0/checkstyle-14.1.0-all.jar
+
+      - name: Run Checkstyle
+        run: |
+          find src -name "*.java" > sources.txt
+          java -jar checkstyle.jar -c /google_checks.xml @sources.txt
