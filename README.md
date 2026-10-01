@@ -1,6 +1,6 @@
-
-Project Structure:
-
+# Java Homework Maven
+## Project Structure:
+```
 │
 ├── pom.xml
 │
@@ -68,3 +68,4 @@ Project Structure:
 │                           └── ...
 │
 └── target/
+```
