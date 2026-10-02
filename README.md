@@ -69,3 +69,15 @@
 │
 └── target/
 ```
+
+## Requirements
+
+- JDK 25 (see `maven.compiler.release` in `pom.xml`)
+- Maven
+- Google Chrome for Selenium scenarios
+
+## How to run
+
+- Open the project in IntelliJ IDEA via `pom.xml`.
+- Run all tests: `mvn test`. This runs every test class under `src/test`, including other participants' tests.
+- Run a `main` method from IntelliJ IDEA, for example `team.bravo.proz.HW11.Main`. `mvn test` does not run `main` methods.
