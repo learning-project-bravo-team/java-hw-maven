@@ -1,0 +1,46 @@
+package team.bravo.proz.HW11;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
+import java.time.Duration;
+import java.util.List;
+
+public class BrowserDemo {
+    public void main() {
+        WebDriver driver = new ChromeDriver();
+        try {
+            driver.get("https://www.selenium.dev/selenium/web/web-form.html");
+            System.out.println("Title: " + driver.getTitle());
+
+            WebElement textBox = driver.findElement(By.name("my-text"));
+            textBox.sendKeys("Selenium");
+            System.out.println("Typed: " + textBox.getAttribute("value"));
+
+            List<WebElement> checkboxes = driver.findElements(By.cssSelector("input[type='checkbox']"));
+            System.out.println("Checkboxes on page: " + checkboxes.size());
+            List<WebElement> labels =
+                    driver.findElements(By.cssSelector("label"));
+
+            System.out.println("Labels found: " + labels.size());
+            for (WebElement label : labels) {
+                System.out.println(label.getText());
+            }
+
+            WebElement submitButton = driver.findElement(By.cssSelector("button"));
+            submitButton.click();
+
+            WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+            WebElement message = wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("message")));
+            System.out.println("Message: " + message.getText());
+
+
+        } finally {
+            driver.quit();
+        }
+    }
+}
